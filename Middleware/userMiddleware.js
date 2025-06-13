@@ -16,7 +16,7 @@ export async function loginMiddleware(req, res, next) {
     if (!passwordCheck) {
       return res.status(400).json({ message: "Wrong password" });
     }
-    req.userInfo = { userEmail };
+    req.userInfo = { user };
     next();
   } catch (err) {
     return res

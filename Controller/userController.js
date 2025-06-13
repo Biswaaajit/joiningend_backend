@@ -3,9 +3,10 @@ import userModel from "../Model/userModel.js";
 
 export async function loginUser(req, res) {
   try {
-    const { userEmail } = req.userInfo;
+    const { user } = req.userInfo;
+    const { userEmail } = user;
     const token = jwt.sign({ userEmail }, "secret");
-    return res.status(200).json({ message: "Login successful", token });
+    return res.status(200).json({ message: "Login successful", token, user });
   } catch (err) {
     return res
       .status(500)
